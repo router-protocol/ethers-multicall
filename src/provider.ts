@@ -4,10 +4,10 @@ import { getEthBalance } from './calls';
 import { ContractCall } from './types';
 
 export class Provider {
-  private _provider: ethers.providers.Provider;
+  private _provider: any;
   private _multicallAddress: string;
 
-  constructor(provider: ethers.providers.Provider, chainId?: number) {
+  constructor(provider: any, chainId?: number) {
     this._provider = provider;
     this._multicallAddress = getAddressForChainId(chainId);
   }
@@ -230,7 +230,7 @@ function getAddressForChainId(chainId: number) {
   return multicallAddresses[chainId];
 }
 
-async function getAddress(provider: ethers.providers.Provider) {
+async function getAddress(provider: any) {
   const { chainId } = await provider.getNetwork();
   return getAddressForChainId(chainId);
 }

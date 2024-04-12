@@ -6,7 +6,7 @@ import { ContractCall } from './types';
 export async function all<T extends any[] = any[]>(
   calls: ContractCall[],
   multicallAddress: string,
-  provider: ethers.providers.Provider,
+  provider: any,
 ): Promise<T> {
   const multicall = new ethers.Contract(multicallAddress, multicallAbi, provider);
   const callRequests = calls.map(call => {
